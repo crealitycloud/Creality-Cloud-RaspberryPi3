@@ -1,6 +1,8 @@
 ## 安装创想云app、注册创想云账号
-在运行打印服务之前一定要在移动端安装创想云app和注册创想云app账号
-连接地址：
+在运行打印服务之前一定要在移动端安装创想云app和注册创想云app账号  
+
+IOS: https://tinyurl.com/CrealityiOS  
+Android: https://tinyurl.com/CrealityAndroid
 
 ## 安装创想云树莓派打印服务
 #### 安装服务
