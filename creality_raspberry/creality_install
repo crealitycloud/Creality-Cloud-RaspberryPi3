@@ -1,0 +1,26 @@
+#!/bin/sh
+baseDirForScriptSelf=$(cd "$(dirname "$0")"; pwd)
+#echo "full path to currently executed script is : ${baseDirForScriptSelf}"
+
+GenerateIdentifier="$baseDirForScriptSelf/GenerateIdentifier"
+if [ ! -f "$GenerateIdentifier" ]; then
+        echo "$GenerateIdentifier" was not exist!
+        exit 0
+fi
+sudo "$GenerateIdentifier"
+sudo echo "[Unit]
+Description= creality printer server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=$baseDirForScriptSelf/creality_start 
+ExecStop=$baseDirForScriptSelf/creality_stop
+
+[Install]
+WantedBy=multi-user.target" > $baseDirForScriptSelf/creality_printer.service
+sudo cp "$baseDirForScriptSelf"/creality_printer.service /usr/lib/systemd/system 
+
+sudo systemctl enable creality_printer.service
+sudo systemctl stop creality_printer.service
+sudo systemctl start creality_printer.service

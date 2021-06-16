@@ -1,0 +1,16 @@
+#!/bin/sh
+baseDirForScriptSelf=$(cd "$(dirname "$0")"; pwd)
+echo "full path to currently executed script is : ${baseDirForScriptSelf}"
+RaspberryPiCreality="$baseDirForScriptSelf/RaspberryPiCreality"
+if [ ! -f "$RaspberryPiCreality" ]; then
+        echo "$RaspberryPiCreality" was not exist!
+        exit 0
+fi
+DownFile="$baseDirForScriptSelf/DownFile"
+if [ ! -f "$DownFile" ]; then
+        echo "$DownFile" was not exist!
+        exit 0
+fi
+sudo  "$DownFile"  &
+sudo  "$RaspberryPiCreality" &
+

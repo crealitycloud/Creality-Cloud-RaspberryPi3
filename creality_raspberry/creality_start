@@ -1,0 +1,92 @@
+#!/bin/sh
+
+
+baseDirForScriptSelf=$(cd "$(dirname "$0")"; pwd)
+echo "full path to currently executed script is : ${baseDirForScriptSelf}"
+
+#serail_port=$1
+
+#if [ ! $serail_port ]; then
+#	echo serail_port was null.
+#	exit 0
+#fi
+serailupfifo="/tmp/serailupfifo"
+mqttdownfifo="/tmp/mqttdownfifo"
+httpdownloadfifo="/tmp/httpdownloadfifo"
+log_path="/home/pi/creality/log"
+print_file_path="/home/pi/creality/printerFiles"
+log_prt="/tmp/debug/prt_com"
+log_clould="/tmp/debug/led"
+
+
+
+
+printer_com_project="$baseDirForScriptSelf/prtSerial"
+if [ ! -f "$printer_com_project" ]; then
+	echo "$printer_com_project" was not exist!
+	exit 0
+fi
+RaspberryPiCreality="$baseDirForScriptSelf/RaspberryPiCreality"
+if [ ! -f "$RaspberryPiCreality" ]; then
+	echo "$RaspberryPiCreality" was not exist!
+	exit 0
+fi
+DownFile="$baseDirForScriptSelf/DownFile"
+if [ ! -f "$DownFile" ]; then
+	echo "$DownFile" was not exist!
+	exit 0
+fi
+uvc_stream="$baseDirForScriptSelf/uvc_stream"
+if [ ! -f "$uvc_stream" ]; then
+	echo "$uvc_stream" was not exist!
+	exit 0
+fi
+
+
+
+
+if [ ! -p "$serailupfifo" ]; then
+	echo "$serailupfifo" was not exist!
+	mkfifo "$serailupfifo"
+fi
+echo "$serailupfifo" was exist!
+if [ ! -p "$mqttdownfifo" ]; then
+	echo "$mqttdownfifo" was not exist!
+	mkfifo "$mqttdownfifo"
+fi
+echo "$mqttdownfifo" was exist!
+if [ ! -p "$httpdownloadfifo" ]; then
+	echo "$httpdownloadfifo" was not exist!
+	mkfifo "$httpdownloadfifo"
+fi
+echo "$httpdownloadfifo" was exist!
+
+if [ ! -d "$log_path" ]; then
+	echo "$log_path" was not exist!
+	mkdir -p "$log_path"
+fi
+echo "$log_path" was exist!
+if [ ! -d "$print_file_path" ]; then
+	echo "$print_file_path" was not exist!
+	mkdir -p "$print_file_path"
+fi
+echo "$print_file_path" was exist!
+if [ ! -d "$log_prt" ]; then
+	echo "$log_prt" was not exist!
+	mkdir -p "$log_prt"
+fi
+
+echo "$log_prt" was exist!
+if [ ! -d "$log_clould" ]; then
+	echo "$log_clould" was not exist!
+	mkdir -p "$log_clould"
+fi
+echo "$log_clould" not exist!
+
+
+#sudo  "$printer_com_project" -p "$serail_port" > /dev/null &
+sudo  "$printer_com_project"  &
+sudo  "$DownFile" &
+sudo  "$uvc_stream" &
+cd "$baseDirForScriptSelf" && sudo ./RaspberryPiCreality 
+

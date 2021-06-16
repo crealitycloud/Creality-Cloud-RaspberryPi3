@@ -1,0 +1,28 @@
+#!/bin/sh 
+
+start(){
+	sudo ./p2pser_rtsp  &
+}
+stop(){
+	killall p2pser_rtsp 
+}
+restart(){
+	killall p2pser_rtsp
+	sudo  ./p2pser_rtsp  &
+}
+case "$1" in
+start)
+	start
+	;;
+stop)
+	stop
+	;;
+restart)
+	restart
+	;;
+
+*)
+	echo  "please input right parse"
+	 exit 1
+	;;
+esac

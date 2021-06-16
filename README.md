@@ -1,10 +1,12 @@
 ## 安装创想云app、注册创想云账号
 在运行打印服务之前一定要在移动端安装创想云app和注册创想云app账号
+连接地址：
 
 ## 安装创想云树莓派打印服务
 #### 安装服务
   获取服务程序: git clone https://github.com/crealitycloud/Creality-Cloud-RaspberryPi-.git
-  安装服务程序: sudo ./creality_install
+
+  安装服务程序: cd Creality-Cloud-RaspberryPi-/creality_raspberry && sudo ./creality_install
 
   ![节点](./picture/install.jpg)
 

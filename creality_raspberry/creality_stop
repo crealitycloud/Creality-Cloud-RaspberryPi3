@@ -1,0 +1,31 @@
+#!/bin/sh
+prtSerial="prtSerial"
+DownFile="DownFile"
+uvc_stream="uvc_stream"
+p2pser_rtsp="p2pser_rtsp"
+RaspberryPiCreality="RaspberryPiCreality"
+pid=$(ps -ef  | grep "$prtSerial" | grep -v grep | awk '{print $2}')
+if [ -n "$pid" ]; then
+    kill -9 $pid
+fi
+
+pid=$(ps -ef  | grep "$DownFile" | grep -v grep | awk '{print $2}')
+if [ -n "$pid" ]; then
+    kill -9 $pid
+fi
+
+pid=$(ps -ef  | grep "$RaspberryPiCreality" | grep -v grep | awk '{print $2}')
+if [ -n "$pid" ]; then
+    kill -9 $pid
+fi
+
+pid=$(ps -ef  | grep "$uvc_stream" | grep -v grep | awk '{print $2}')
+if [ -n "$pid" ]; then
+    kill -9 $pid
+fi
+
+pid=$(ps -ef  | grep "$p2pser_rtsp" | grep -v grep | awk '{print $2}')
+if [ -n "$pid" ]; then
+    kill -9 $pid
+fi
+
