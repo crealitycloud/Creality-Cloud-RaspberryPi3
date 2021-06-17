@@ -26,7 +26,7 @@ Android: https://tinyurl.com/CrealityAndroid
 
    ![节点](./picture/add_input.jpg)
 
-  服务已激活（服务已已启动，不需要再次启动，每次开机会自动启动）
+  服务已激活（服务已启动，不需要再次启动，每次开机会自动启动）
 
   ![节点](./picture/finsh.jpg)
 
