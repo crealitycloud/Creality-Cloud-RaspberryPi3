@@ -18,7 +18,11 @@ Android: https://tinyurl.com/CrealityAndroid
 
   在app上输入验证码
 
-  ![节点](./picture/app_input.jpg)
+  ![节点](./picture/1.png)
+  
+  ![节点](./picture/3.png)
+
+  ![节点](./picture/4.png)
 
    ![节点](./picture/add_input.jpg)
 
@@ -26,6 +30,7 @@ Android: https://tinyurl.com/CrealityAndroid
 
   ![节点](./picture/finsh.jpg)
 
+  ![节点](./picture/6.png)
 
 ## 启动服务
 sudo systemctl start creality_printer.service
