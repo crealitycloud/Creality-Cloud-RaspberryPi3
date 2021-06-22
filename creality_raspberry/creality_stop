@@ -23,6 +23,10 @@ pid=$(ps -ef  | grep "$uvc_stream" | grep -v grep | awk '{print $2}')
 if [ -n "$pid" ]; then
     kill -9 $pid
 fi
+pid=$(ps -ef  | grep ffmpeg | grep -v grep | awk '{print $2}')
+if [ -n "$pid" ]; then
+    kill -9 $pid
+fi
 
 pid=$(ps -ef  | grep "$p2pser_rtsp" | grep -v grep | awk '{print $2}')
 if [ -n "$pid" ]; then
