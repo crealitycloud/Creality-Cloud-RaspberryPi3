@@ -1,4 +1,19 @@
 #!/bin/sh
+
+echo Please make sure the printer is running and connected to this raspberry pi.
+echo Do you want to connect the monitor camera to the printer?
+
+
+until [ "$input" = y ]
+do
+       echo 'Please input [y/n]:'
+       read input
+       if [ "$input" = n ]
+       then
+           echo 'stop install printer service.'
+   	   exit
+       fi
+done
 baseDirForScriptSelf=$(cd "$(dirname "$0")"; pwd)
 #echo "full path to currently executed script is : ${baseDirForScriptSelf}"
 
@@ -7,13 +22,42 @@ if [ ! -f "$GenerateIdentifier" ]; then
         echo "$GenerateIdentifier" was not exist!
         exit 0
 fi
+#connect printer check
+if [ ! -e /dev/ttyUSB0 ]; then
+        echo printer  was not connected,please connect to creality 3D printer from Serial!
+        exit 0
+fi
+
+#video check
+if [ ! -e /dev/video0 ]; then
+        echo camera was not exist!
+        exit
+fi
 sudo "$GenerateIdentifier"
+RETURN=$?
+echo $RETURN
+return_val=0
+
+echo $return_val
+if [ "$RETURN" -ne "$return_val" ] 
+
+then
+	echo time out!
+	exit
+fi	
+echo $RETURN
+
+#3D printer services
 sudo echo "[Unit]
 Description= creality printer server
 After=network.target
 
 [Service]
+Restart=on-failure
+RestartSec=1
 Type=simple
+#Type=forking
+PIDFile=/run/printer.pid
 ExecStart=$baseDirForScriptSelf/creality_start 
 ExecStop=$baseDirForScriptSelf/creality_stop
 
@@ -21,6 +65,29 @@ ExecStop=$baseDirForScriptSelf/creality_stop
 WantedBy=multi-user.target" > $baseDirForScriptSelf/creality_printer.service
 sudo cp "$baseDirForScriptSelf"/creality_printer.service /usr/lib/systemd/system 
 
+# Video Monitoring services
+sudo echo "[Unit]
+Description= creality printer server
+After=network.target
+
+[Service]
+Restart=on-failure
+RestartSec=1
+Type=simple
+#Type=forking
+PIDFile=/run/video.pid
+ExecStart=$baseDirForScriptSelf/video_start 
+ExecStop=$baseDirForScriptSelf/video_stop
+
+[Install]
+WantedBy=multi-user.target" > $baseDirForScriptSelf/creality_video_monitoring.service
+sudo cp "$baseDirForScriptSelf"/creality_video_monitoring.service /usr/lib/systemd/system 
+
 sudo systemctl enable creality_printer.service
 sudo systemctl stop creality_printer.service
 sudo systemctl start creality_printer.service
+
+
+sudo systemctl enable creality_video_monitoring.service
+sudo systemctl stop creality_video_monitoring.service
+sudo systemctl start creality_video_monitoring.service

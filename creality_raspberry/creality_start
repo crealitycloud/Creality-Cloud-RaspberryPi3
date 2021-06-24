@@ -36,11 +36,6 @@ if [ ! -f "$DownFile" ]; then
 	echo "$DownFile" was not exist!
 	exit 0
 fi
-uvc_stream="$baseDirForScriptSelf/uvc_stream"
-if [ ! -f "$uvc_stream" ]; then
-	echo "$uvc_stream" was not exist!
-	exit 0
-fi
 
 
 
@@ -87,6 +82,5 @@ echo "$log_clould" not exist!
 #sudo  "$printer_com_project" -p "$serail_port" > /dev/null &
 sudo  "$printer_com_project"  &
 sudo  "$DownFile" &
-sudo  "$uvc_stream" &
 cd "$baseDirForScriptSelf" && sudo ./RaspberryPiCreality 
 

@@ -1,0 +1,41 @@
+#!/bin/sh
+
+
+baseDirForScriptSelf=$(cd "$(dirname "$0")"; pwd)
+echo "full path to currently executed script is : ${baseDirForScriptSelf}"
+
+#serail_port=$1
+
+#if [ ! $serail_port ]; then
+#	echo serail_port was null.
+#	exit 0
+#fi
+ffmpegfifo="/tmp/ffmpegfifo"
+log_path="/home/pi/creality/log"
+
+
+
+
+uvc_stream="$baseDirForScriptSelf/uvc_stream"
+if [ ! -f "$uvc_stream" ]; then
+	echo "$uvc_stream" was not exist!
+	exit 0
+fi
+
+
+
+
+if [ ! -p "$ffmpegfifo" ]; then
+	echo "$ffmpegfifo" was not exist!
+	mkfifo "$ffmpegfifo"
+fi
+echo "$ffmpegfifo" was exist!
+
+if [ ! -d "$log_path" ]; then
+	echo "$log_path" was not exist!
+	mkdir -p "$log_path"
+fi
+echo "$log_path" was exist!
+
+sudo  "$uvc_stream"
+

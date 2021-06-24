@@ -1,0 +1,13 @@
+#!/bin/sh
+uvc_stream="uvc_stream"
+ffmpeg="ffmpeg"
+RaspberryPiCreality="RaspberryPiCreality"
+
+pid=$(ps -ef  | grep "$uvc_stream" | grep -v grep | awk '{print $2}')
+if [ -n "$pid" ]; then
+    kill -9 $pid
+fi
+pid=$(ps -ef  | grep "$ffmpeg" | grep -v grep | awk '{print $2}')
+if [ -n "$pid" ]; then
+    kill -9 $pid
+fi
