@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ ! -f "/usr/bin/ffmpeg" ]; then
+	sudo apt-get install ffmpeg
+fi
+
 echo Please make sure the printer is running and connected to this raspberry pi.
 echo Do you want to connect the monitor camera to the printer?
 
