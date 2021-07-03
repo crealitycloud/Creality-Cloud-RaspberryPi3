@@ -1,5 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
+sudo mount -rw -o remount /
+
+
+
+
+#install ffmpeg
 if [ ! -f "/usr/bin/ffmpeg" ]; then
 	sudo apt-get install ffmpeg
 fi
@@ -7,19 +13,38 @@ fi
 echo Please make sure the printer is running and connected to this raspberry pi.
 echo Do you want to connect the monitor camera to the printer?
 
+#check usb camera connected
+video_result=`v4l2-ctl --list-devices -d /dev/video0 | grep usb`
+echo $video_result
+if [[ $video_result =~ "usb" ]]
+then
+	echo "Usb camera was connected!"
+else
+	echo "Usb camera was not connected!"
+	until [ "$input" = y ]
+	do
+       		echo 'Ignore inserting USB camera? [y/n]:'
+       		echo '[y/n]:'
+       		read input
+       		if [ "$input" = n ]
+       		then
+           		echo 'Please plug in the USB camera and restart the printer service.'
+   	   		exit
+       		fi
+	done
+fi
 
-until [ "$input" = y ]
-do
-       echo 'Please input [y/n]:'
-       read input
-       if [ "$input" = n ]
-       then
-           echo 'stop install printer service.'
-   	   exit
-       fi
-done
 baseDirForScriptSelf=$(cd "$(dirname "$0")"; pwd)
 #echo "full path to currently executed script is : ${baseDirForScriptSelf}"
+p2pcfg="$baseDirForScriptSelf/p2pcfg.json"
+if [ ! -f "$p2pcfg" ]; then
+	sudo echo "
+	{	
+		 "APILicense" : "123",
+		 "DIDString" : "456",
+		 "InitString" : "789"
+	}" > $p2pcfg
+fi
 
 GenerateIdentifier="$baseDirForScriptSelf/GenerateIdentifier"
 if [ ! -f "$GenerateIdentifier" ]; then
@@ -28,21 +53,25 @@ if [ ! -f "$GenerateIdentifier" ]; then
 fi
 #connect printer check
 if [ ! -e /dev/ttyUSB0 ]; then
-        echo printer  was not connected,please connect to creality 3D printer from Serial!
+        echo Printer  was not connected, please connect to creality 3D printer from Serial!
+        echo And then restart printer services [ creality_printer.service ]!
         exit 0
 fi
 
-#video check
-if [ ! -e /dev/video0 ]; then
-        echo camera was not exist!
-        exit
+
+sudo "$GenerateIdentifier" -p /dev/ttyUSB0 > /dev/null
+return_val=$?
+if [[ $return_val =~ 0 ]]
+then
+	echo "3D Printer was not connected, please connected!"
+	exit
 fi
-sudo "$GenerateIdentifier"
+sudo "$GenerateIdentifier" -a /dev/ttyUSB0 
 RETURN=$?
 echo $RETURN
 return_val=0
 
-echo $return_val
+#echo $return_val
 if [ "$RETURN" -ne "$return_val" ] 
 
 then
@@ -87,6 +116,15 @@ ExecStop=$baseDirForScriptSelf/video_stop
 WantedBy=multi-user.target" > $baseDirForScriptSelf/creality_video_monitoring.service
 sudo cp "$baseDirForScriptSelf"/creality_video_monitoring.service /usr/lib/systemd/system 
 
+p2pcfg="$baseDirForScriptSelf/p2pcfg.json"
+if [ ! -f "$p2pcfg" ]; then
+	sudo echo "
+	{	
+		 "APILicense" : "123",
+		 "DIDString" : "456",
+		 "InitString" : "789"
+	}" > $p2pcfg
+fi
 sudo systemctl enable creality_printer.service
 sudo systemctl stop creality_printer.service
 sudo systemctl start creality_printer.service
