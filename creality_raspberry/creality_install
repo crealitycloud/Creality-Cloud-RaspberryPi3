@@ -4,6 +4,10 @@ sudo mount -rw -o remount /
 
 
 
+#install qrencode
+if [ ! -f "/usr/bin/qrencode" ]; then
+	sudo apt-get install qrencode
+fi
 
 #install ffmpeg
 if [ ! -f "/usr/bin/ffmpeg" ]; then
