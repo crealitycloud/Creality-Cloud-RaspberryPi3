@@ -17,7 +17,9 @@ Android: https://tinyurl.com/CrealityAndroid
   ![节点](./picture/qrencode.png)
 
   在app上扫二维码
+
   ![节点](./picture/saoma.png)
+
   在app上输入验证码
 
   ![节点](./picture/1.png)
