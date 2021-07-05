@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sudo mount -rw -o remount /
-
+sudo git pull
 
 baseDirForScriptSelf=$(cd "$(dirname "$0")"; pwd)
 echo "full path to currently executed script is : ${baseDirForScriptSelf}"
