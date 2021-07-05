@@ -83,6 +83,7 @@ echo "$log_clould" not exist!
 
 #sudo  "$printer_com_project" -p "$serail_port" > /dev/null &
 sudo  "$printer_com_project"  &
+sleep 1
 sudo  "$DownFile" &
 cd "$baseDirForScriptSelf" && sudo ./RaspberryPiCreality 
 
