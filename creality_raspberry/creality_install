@@ -25,12 +25,12 @@ then
 	echo "Usb camera was connected!"
 else
 	echo "Usb camera was not connected!"
-	until [ "$input" = y ]
+	until [[ "$input" = y ]] || [[ "$input" = Y ]]
 	do
        		echo 'Ignore inserting USB camera? [y/n]:'
        		echo '[y/n]:'
        		read input
-       		if [ "$input" = n ]
+       		if [[ "$input" = n ]] || [[ "$input" = N ]]
        		then
            		echo 'Please plug in the USB camera and restart the printer service.'
    	   		exit
