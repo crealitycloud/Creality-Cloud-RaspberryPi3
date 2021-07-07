@@ -9,7 +9,9 @@ Android: https://tinyurl.com/CrealityAndroid
   获取服务程序: git clone https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git
 
   进入程序安装目录：cd Creality-Cloud-RaspberryPi3/creality_raspberry
+
   执行程序安装脚本：sudo ./creality_install
+  
 
   ![节点](./picture/install.jpg)
 
