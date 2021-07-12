@@ -72,17 +72,22 @@ then
 fi
 sudo "$GenerateIdentifier" -a /dev/ttyUSB0 
 RETURN=$?
-echo $RETURN
+#echo $RETURN
 return_val=0
 
 #echo $return_val
 if [ "$RETURN" -ne "$return_val" ] 
-
 then
-	echo time out!
-	exit
+	if [ "$RETURN" = -1 ];then
+		echo "Time out, The verification code has expired. Please execute this command again [sudo ./creality_install]  to install the 3D printer service."
+		exit
+	fi
+	if [ "$RETURN" = -2 ];then
+		echo "The request for verification code failed. Please check the network  is connected to the Internet."
+		exit
+	fi
 fi	
-echo $RETURN
+#echo $RETURN
 
 #3D printer services
 sudo echo "[Unit]

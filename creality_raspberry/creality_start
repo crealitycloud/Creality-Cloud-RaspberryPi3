@@ -85,5 +85,5 @@ echo "$log_clould" not exist!
 sudo  "$printer_com_project"  &
 sleep 1
 sudo  "$DownFile" &
-cd "$baseDirForScriptSelf" && sudo ./RaspberryPiCreality 
+cd "$baseDirForScriptSelf" && sudo ./RaspberryPiCreality  > /dev/null
 
