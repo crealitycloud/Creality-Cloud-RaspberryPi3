@@ -6,11 +6,15 @@ sudo mount -rw -o remount /
 
 #install qrencode
 if [ ! -f "/usr/bin/qrencode" ]; then
+	sudo dpkg --configure -a
+	sudo apt update
 	sudo echo y | apt-get install qrencode
 fi
 
 #install ffmpeg
 if [ ! -f "/usr/bin/ffmpeg" ]; then
+	sudo dpkg --configure -a
+	sudo apt update
 	sudo echo y | apt-get install ffmpeg
 fi
 
@@ -70,7 +74,7 @@ then
 	echo "3D Printer was not connected, please connected!"
 	exit
 fi
-sudo "$GenerateIdentifier" -a /dev/ttyUSB0 
+sudo "$GenerateIdentifier" -a /dev/ttyUSB0 > /dev/null
 RETURN=$?
 #echo $RETURN
 return_val=0
