@@ -60,7 +60,7 @@ if [ ! -f "$GenerateIdentifier" ]; then
         exit 0
 fi
 #connect printer check
-#printer_couter=0
+printer_couter=0
 printer=$(ls -rtl /dev/ | grep "ttyUSB" | grep -v grep | awk '{print $10}')
 echo "$printer"
 if [ -n "$printer" ]; then
@@ -74,11 +74,12 @@ if [ -n "$printer" ]; then
 	#	exit
 		echo  The /dev/"$printer" was not printer Serial.
 	else
+		#$printer_cout=$((${printer_cout} + 1))
 		printer_couter=1
 
 	fi
 fi
-if [[ $printer_couter =~ 0 ]]; then
+if [[ $printer_couter -eq 0 ]]; then
 	echo "3D Printer was not connected, please connected!"
 	exit
 fi
