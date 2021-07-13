@@ -60,20 +60,29 @@ if [ ! -f "$GenerateIdentifier" ]; then
         exit 0
 fi
 #connect printer check
-if [ ! -e /dev/ttyUSB0 ]; then
-        echo Printer  was not connected, please connect to creality 3D printer from Serial!
-        echo And then restart printer services [ creality_printer.service ]!
-        exit 0
+#printer_couter=0
+printer=$(ls -rtl /dev/ | grep "ttyUSB" | grep -v grep | awk '{print $10}')
+echo "$printer"
+if [ -n "$printer" ]; then
+        #echo Printer  was not connected, please connect to creality 3D printer from Serial!
+        #echo And then restart printer services [ creality_printer.service ]!
+        #exit 0
+	sudo "$GenerateIdentifier" -p /dev/"$printer" > /dev/null
+	return_val=$?
+	if [[ $return_val =~ 0 ]]
+	then
+	#	exit
+		echo  The /dev/"$printer" was not printer Serial.
+	else
+		printer_couter=1
+
+	fi
 fi
-
-
-sudo "$GenerateIdentifier" -p /dev/ttyUSB0 > /dev/null
-return_val=$?
-if [[ $return_val =~ 0 ]]
-then
+if [[ $printer_couter =~ 0 ]]; then
 	echo "3D Printer was not connected, please connected!"
 	exit
 fi
+
 sudo "$GenerateIdentifier" -a /dev/ttyUSB0 
 RETURN=$?
 #echo $RETURN
