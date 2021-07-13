@@ -62,7 +62,7 @@ fi
 #connect printer check
 printer_couter=0
 printer=$(ls -rtl /dev/ | grep "ttyUSB" | grep -v grep | awk '{print $10}')
-echo "$printer"
+#echo "$printer"
 if [ -n "$printer" ]; then
         #echo Printer  was not connected, please connect to creality 3D printer from Serial!
         #echo And then restart printer services [ creality_printer.service ]!
