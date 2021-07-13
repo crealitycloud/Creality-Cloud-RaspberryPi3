@@ -74,7 +74,7 @@ then
 	echo "3D Printer was not connected, please connected!"
 	exit
 fi
-sudo "$GenerateIdentifier" -a /dev/ttyUSB0 > /dev/null
+sudo "$GenerateIdentifier" -a /dev/ttyUSB0 
 RETURN=$?
 #echo $RETURN
 return_val=0
