@@ -14,7 +14,7 @@ CrealityPi is a firmware that can run on a Raspberry Pi. With CrealityPi, you ca
 
 1. **Download the Creality Cloud app**
 
-Before installing CrealityPi on a Raspberry Pi, please make sure you have installed the Creality Cloud app on your mobile device and registered an account on Creality Cloud.
+Before installing CrealityPi on a Raspberry Pi, please make sure you have installed the Creality Cloud app (3.0 or higher) on your mobile device and registered an account on Creality Cloud.
 
 iPhone &amp; iPad: [https://tinyurl.com/CrealityiOS](https://tinyurl.com/CrealityiOS)
 Android: [https://tinyurl.com/CrealityAndroid](https://tinyurl.com/CrealityAndroid)
@@ -27,7 +27,7 @@ Creality webcam is recommended. If you are looking for an alternative, please ma
 
 ![](./picture/add1.jpg)
 
-1. **SSH into your Raspberry Pi**
+4. **SSH into your Raspberry Pi**
 
 How-to video: [https://youtu.be/wOFro6GwEFQ](https://youtu.be/wOFro6GwEFQ)
 
