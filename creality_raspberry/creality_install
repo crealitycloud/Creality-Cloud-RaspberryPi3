@@ -6,12 +6,16 @@ sudo mount -rw -o remount /
 
 #install qrencode
 if [ ! -f "/usr/bin/qrencode" ]; then
-	sudo apt-get install qrencode
+	sudo dpkg --configure -a
+	sudo apt update
+	sudo echo y | apt-get install qrencode
 fi
 
 #install ffmpeg
 if [ ! -f "/usr/bin/ffmpeg" ]; then
-	sudo apt-get install ffmpeg
+	sudo dpkg --configure -a
+	sudo apt update
+	sudo echo y | apt-get install ffmpeg
 fi
 
 echo Please make sure the printer is running and connected to this raspberry pi.
@@ -56,33 +60,48 @@ if [ ! -f "$GenerateIdentifier" ]; then
         exit 0
 fi
 #connect printer check
-if [ ! -e /dev/ttyUSB0 ]; then
-        echo Printer  was not connected, please connect to creality 3D printer from Serial!
-        echo And then restart printer services [ creality_printer.service ]!
-        exit 0
+printer_couter=0
+printer=$(ls -rtl /dev/ | grep "ttyUSB" | grep -v grep | awk '{print $10}')
+#echo "$printer"
+if [ -n "$printer" ]; then
+        #echo Printer  was not connected, please connect to creality 3D printer from Serial!
+        #echo And then restart printer services [ creality_printer.service ]!
+        #exit 0
+	sudo "$GenerateIdentifier" -p /dev/"$printer" > /dev/null
+	return_val=$?
+	if [[ $return_val =~ 0 ]]
+	then
+	#	exit
+		echo  The /dev/"$printer" was not printer Serial.
+	else
+		#$printer_cout=$((${printer_cout} + 1))
+		printer_couter=1
+
+	fi
 fi
-
-
-sudo "$GenerateIdentifier" -p /dev/ttyUSB0 > /dev/null
-return_val=$?
-if [[ $return_val =~ 0 ]]
-then
+if [[ $printer_couter -eq 0 ]]; then
 	echo "3D Printer was not connected, please connected!"
 	exit
 fi
+
 sudo "$GenerateIdentifier" -a /dev/ttyUSB0 
 RETURN=$?
-echo $RETURN
+#echo $RETURN
 return_val=0
 
 #echo $return_val
 if [ "$RETURN" -ne "$return_val" ] 
-
 then
-	echo time out!
-	exit
+	if [ "$RETURN" = -1 ];then
+		echo "Time out, The verification code has expired. Please execute this command again [sudo ./creality_install]  to install the 3D printer service."
+		exit
+	fi
+	if [ "$RETURN" = -2 ];then
+		echo "The request for verification code failed. Please check the network  is connected to the Internet."
+		exit
+	fi
 fi	
-echo $RETURN
+#echo $RETURN
 
 #3D printer services
 sudo echo "[Unit]
