@@ -63,7 +63,7 @@ sudo systemctl stop creality_printer.service
 #### 查看服务状态 
 sudo systemctl status creality_printer.service
 
-## 问题
+## 常见问题
 q:远程连接被拒绝
 
 a:确认树莓派打开ssh服务，并开了22端口。
