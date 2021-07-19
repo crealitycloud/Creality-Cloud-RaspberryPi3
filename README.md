@@ -1,80 +1,94 @@
+# **How to Install CrealityPi on a Raspberry Pi**
 
 
-## checklist
+# **What is CrealityPi?**
 
-  #### 安装创想云app、注册创想云账号
-  在运行打印服务之前一定要在移动端安装创想云app和注册创想云app账号  
+CrealityPi is a firmware that can run on a Raspberry Pi. With CrealityPi, you can remote control and monitor your 3D printer. Here are some of the things CrealityPi allows you to do:
 
-  IOS: https://tinyurl.com/CrealityiOS  
-  Android: https://tinyurl.com/CrealityAndroid
+- Manually control a Creality 3D printer using the Creality Cloud app
+- Monitor and change print settings using the Creality Cloud app
+- Set up a webcam to view in the Creality Cloud app
+- Slice models using the Creality Cloud app
 
-  #### 连接打印机
+# **Before you start…**
 
-    打印机一定要通过串口线连接到树莓派，并确保连接好，不然程序是安装不成功的。
+1. **Download the Creality Cloud app**
 
-  #### 连接监控摄像头
-    
-    如果需要使用app的监控打印机的功能请连接监控摄像头，不连接摄像头也不影响使用打印服务但是不能使用创想云app的打印机监控功能。
+Before installing CrealityPi on a Raspberry Pi, please make sure you have installed the Creality Cloud app on your mobile device and registered an account on Creality Cloud.
 
-  #### 树莓派操作准备
-      在Windows远程操作树莓派建议使用putty。
-      ios远程操作直接使用终端用ssh连接。
-      也可以直接使用HDMI连接显示屏幕。
+iPhone &amp; iPad: [https://tinyurl.com/CrealityiOS](https://tinyurl.com/CrealityiOS)
+Android: [https://tinyurl.com/CrealityAndroid](https://tinyurl.com/CrealityAndroid)
 
-## 安装创想云树莓派打印服务
-#### 安装服务
+2. **Connect your 3D printer with your Raspberry Pi through a USB cable**
 
-  获取服务程序: git clone https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git
+3. **Connect a supported webcam with your Raspberry Pi (Optional)**
 
-  ![节点](./picture/git.png)
+Creality webcam is recommended. If you are looking for an alternative, please make sure the camera you purchase meets the following requirements:
 
-  进入程序安装目录：cd Creality-Cloud-RaspberryPi3/creality_raspberry
+![](./picture/add1.jpg)
 
-  ![节点](./picture/cd_path.png)
+1. **SSH into your Raspberry Pi**
 
-  执行程序安装脚本：sudo ./creality_install
+How-to video: [https://youtu.be/wOFro6GwEFQ](https://youtu.be/wOFro6GwEFQ)
 
-  生成验证码： 
+Using SSH on the Raspberry Pi (10-min read):[https://pimylifeup.com/raspberry-pi-ssh/](https://pimylifeup.com/raspberry-pi-ssh/)
 
-  ![节点](./picture/install.png)
+# **Install CrealityPi on Raspberry Pi**
 
-  在app选择树莓派
+1. **Install the service program**
 
-  ![节点](./picture/add_rasp.jpg)
+  - Download CrealityPi:
 
-  扫码或输入验证码添加树莓派
+sudo git clone [https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git](https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git)
 
-  ![节点](./picture/add_import.jpg)
-  
-  ![节点](./picture/adding.jpg)
+![](./picture/add2.jpg)
 
-  ![节点](./picture/add_success.jpg)
+  - Enter install directory:
 
-  服务已激活（服务已启动，不需要再次启动，每次开机会自动启动）
+  cd Creality-Cloud-RaspberryPi3/creality_raspberry
 
-#### 启动服务
+![](./picture/add3.jpg)
+
+  - Run installer scripts:
+
+  sudo ./creality_install
+
+![](./picture/add4.jpg)
+
+Finish the above three steps, and a verification code should be automatically generated.
+
+![](./picture/add5.jpg)
+
+In this example, the verification code is 590552 (The QR code above also contains the verification code info).
+
+2. **Enter verification code in the Creality Cloud app**
+
+Open the Creality Cloud app on your mobile device, tap Printing > Add Device >  Raspberry Pi. Manually enter the verification code or scan the QR code on your screen.
+
+![](./picture/add6.jpg)
+
+Hold on tight as your Raspberry Pi is being added to Creality Cloud. This should take a few moments. If everything works well, you will see Verification successful! on your screen.
+
+![](./picture/add7.jpg)
+
+3. **Name your Raspberry Pi**
+
+Please give your Raspberry Pi a cool name and tap Done. You are all set! You can find it on the My Devices page.
+
+![](./picture/add8.jpg)
+
+# **Some useful commands**
+
+- **Start service**
+
 sudo systemctl start creality_printer.service
-#### 停止服务
+
+- **Stop service**
+
 sudo systemctl stop creality_printer.service
 
-![节点](./picture/stop.jpg)
+![](./picture/add9.jpg)
 
+- **Check service status**
 
-#### 查看服务状态 
 sudo systemctl status creality_printer.service
-
-## 问题
-q:远程连接被拒绝
-a:确认树莓派打开ssh服务，并开了22端口。
-
-q:树莓派git安装报错
-a:sudo apt-get update，然后再sudo apt-get install git
-
-q:在执行安装命令时报错权限不够。
-a:在执行命令前加上sudo。
-
-q:电压不稳，树莓派系统不断重启。
-a:建议使用5v2A树莓派官方指定的电源适配器和电源线。
-
-q:在安装过程中报错：is not a command.
-a：仔细检查下命令是否输入错误，建议直接使用复制粘贴。
