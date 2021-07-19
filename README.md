@@ -22,6 +22,8 @@ Android: [https://tinyurl.com/CrealityAndroid](https://tinyurl.com/CrealityAndro
 
 2. **Connect your 3D printer with your Raspberry Pi through a USB cable**
 
+We recommend using a Raspberry Pi from Raspberry Pi 3 & 4 family.
+
 3. **Connect a supported webcam with your Raspberry Pi (Optional)**
 
 Creality webcam is recommended. If you are looking for an alternative, please make sure the camera you purchase meets the following requirements:
