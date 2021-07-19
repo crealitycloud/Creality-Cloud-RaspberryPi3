@@ -8,36 +8,31 @@ Android: https://tinyurl.com/CrealityAndroid
 #### 安装服务
   获取服务程序: git clone https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git
 
+  ![节点](./picture/git.png)
+
   进入程序安装目录：cd Creality-Cloud-RaspberryPi3/creality_raspberry
 
-  执行程序安装脚本：sudo ./creality_install
-  
+  ![节点](./picture/cd_path.png)
 
-  ![节点](./picture/install.jpg)
+  执行程序安装脚本：sudo ./creality_install
 
   生成验证码： 
 
-  ![节点](./picture/qrencode.png)
+  ![节点](./picture/install.png)
 
-  在app上扫二维码
+  在app选择树莓派
 
-  ![节点](./picture/saoma.png)
+  ![节点](./picture/add_rasp.jpg)
 
-  在app上输入验证码
+  扫码或输入验证码添加树莓派
 
-  ![节点](./picture/1.png)
+  ![节点](./picture/add_import.jpg)
   
-  ![节点](./picture/3.png)
+  ![节点](./picture/adding.jpg)
 
-  ![节点](./picture/4.png)
-
-   ![节点](./picture/add_input.jpg)
+  ![节点](./picture/add_success.jpg)
 
   服务已激活（服务已启动，不需要再次启动，每次开机会自动启动）
-
-  ![节点](./picture/finsh.jpg)
-
-  ![节点](./picture/6.png)
 
 ## 启动服务
 sudo systemctl start creality_printer.service
