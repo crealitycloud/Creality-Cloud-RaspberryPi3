@@ -65,16 +65,21 @@ sudo systemctl status creality_printer.service
 
 ## 问题
 q:远程连接被拒绝
+
 a:确认树莓派打开ssh服务，并开了22端口。
 
 q:树莓派git安装报错
+
 a:sudo apt-get update，然后再sudo apt-get install git
 
 q:在执行安装命令时报错权限不够。
+
 a:在执行命令前加上sudo。
 
 q:电压不稳，树莓派系统不断重启。
+
 a:建议使用5v2A树莓派官方指定的电源适配器和电源线。
 
 q:在安装过程中报错：is not a command.
+
 a：仔细检查下命令是否输入错误，建议直接使用复制粘贴。
