@@ -26,7 +26,8 @@ We recommend using a Raspberry Pi from Raspberry Pi 3 & 4 family.
 
 3. **Connect a supported webcam with your Raspberry Pi (Optional)**
 
-Creality webcam is recommended. If you are looking for an alternative, please make sure the camera you purchase meets the following requirements:
+Creality webcam is recommended [https://vip.creality.com/en/goods-detail/1004](https://vip.creality.com/en/goods-detail/1004). 
+If you are looking for an alternative, please make sure the camera you purchase meets the following requirements:
 
 ![](./picture/add1.jpg)
 
