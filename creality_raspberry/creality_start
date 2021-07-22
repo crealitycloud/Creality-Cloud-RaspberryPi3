@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sudo mount -rw -o remount /
 sudo git pull
@@ -19,6 +19,7 @@ log_path="/home/pi/creality/log"
 print_file_path="/home/pi/creality/printerFiles"
 log_prt="/tmp/debug/prt_com"
 log_clould="/tmp/debug/led"
+
 
 
 
@@ -80,9 +81,47 @@ if [ ! -d "$log_clould" ]; then
 fi
 echo "$log_clould" not exist!
 
+#connect printer check
+printer_value="/dev/ttyUSB0"
+baudrate_value=115200
+printer_couter=0
+printer=$(ls -rtl /dev/ | grep "ttyUSB" | grep -v grep | awk '{print $10}')
+#echo "$printer"
+baudrate_arr=(115200 250000)
+
+if [ -n "$printer" ]; then
+        #echo Printer  was not connected, please connect to creality 3D printer from Serial!
+        #echo And then restart printer services [ creality_printer.service ]!
+        #exit 0
+	for baudrate in ${baudrate_arr[@]}
+	do
+		echo baudrate was $baudrate
+		sudo "$GenerateIdentifier" -b $baudrate -p /dev/"$printer" > /dev/null
+		return_val=$?
+		if [[ $return_val =~ 0 ]]
+		then
+		#	exit
+			echo  The /dev/"$printer" was not printer Serial.
+		else
+			#$printer_cout=$((${printer_cout} + 1))
+			printer_couter=1
+			printer_value="$printer"
+			baudrate_value="$baudrate"
+
+			echo "$printer":"$baudrate" > printer_serial.txt
+			break
+
+		fi
+	done
+fi
+
+if [[ $printer_couter -eq 0 ]]; then
+	echo "3D Printer was not connected, please connected!"
+	exit
+fi
 
 #sudo  "$printer_com_project" -p "$serail_port" > /dev/null &
-sudo  "$printer_com_project"  &
+sudo  "$printer_com_project" -a /dev/"$printer_value" -b "$baudrate_value"  &
 sleep 1
 sudo  "$DownFile" &
 cd "$baseDirForScriptSelf" && sudo ./RaspberryPiCreality  > /dev/null

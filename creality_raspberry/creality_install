@@ -63,26 +63,36 @@ fi
 printer_couter=0
 printer=$(ls -rtl /dev/ | grep "ttyUSB" | grep -v grep | awk '{print $10}')
 #echo "$printer"
+baudrate_arr=(115200 250000)
+
 if [ -n "$printer" ]; then
         #echo Printer  was not connected, please connect to creality 3D printer from Serial!
         #echo And then restart printer services [ creality_printer.service ]!
         #exit 0
-	sudo "$GenerateIdentifier" -p /dev/"$printer" > /dev/null
-	return_val=$?
-	if [[ $return_val =~ 0 ]]
-	then
-	#	exit
-		echo  The /dev/"$printer" was not printer Serial.
-	else
-		#$printer_cout=$((${printer_cout} + 1))
-		printer_couter=1
+	for baudrate in ${baudrate_arr[@]}
+	do
+		echo baudrate was $baudrate
+		sudo "$GenerateIdentifier" -b $baudrate -p /dev/"$printer" > /dev/null
+		return_val=$?
+		if [[ $return_val =~ 0 ]]
+		then
+		#	exit
+			echo  The /dev/"$printer" was not printer Serial.
+		else
+			#$printer_cout=$((${printer_cout} + 1))
+			printer_couter=1
+			
+			echo "$printer":"$baudrate" > printer_serial.txt
+			break
 
-	fi
+		fi
+	done
 fi
 if [[ $printer_couter -eq 0 ]]; then
 	echo "3D Printer was not connected, please connected!"
 	exit
 fi
+
 
 sudo "$GenerateIdentifier" -a /dev/ttyUSB0 
 RETURN=$?
@@ -119,7 +129,7 @@ ExecStop=$baseDirForScriptSelf/creality_stop
 
 [Install]
 WantedBy=multi-user.target" > $baseDirForScriptSelf/creality_printer.service
-sudo cp "$baseDirForScriptSelf"/creality_printer.service /usr/lib/systemd/system 
+sudo mv "$baseDirForScriptSelf"/creality_printer.service /usr/lib/systemd/system 
 
 # Video Monitoring services
 sudo echo "[Unit]
@@ -137,7 +147,12 @@ ExecStop=$baseDirForScriptSelf/video_stop
 
 [Install]
 WantedBy=multi-user.target" > $baseDirForScriptSelf/creality_video_monitoring.service
-sudo cp "$baseDirForScriptSelf"/creality_video_monitoring.service /usr/lib/systemd/system 
+sudo mv "$baseDirForScriptSelf"/creality_video_monitoring.service /usr/lib/systemd/system 
+
+# uart hotplug
+sudo echo "ACTION==\"add\", SUBSYSTEMS==\"usb\", RUN+=\"$baseDirForScriptSelf/usbdrive.sh &\"
+ACTION==\"remove\", SUBSYSTEMS==\"usb\", RUN+=\"$baseDirForScriptSelf/usbdrive.sh &\"" > $baseDirForScriptSelf/98-3d-printer.rules
+sudo mv "$baseDirForScriptSelf"/98-3d-printer.rules /etc/udev/rules.d/ 
 
 p2pcfg="$baseDirForScriptSelf/p2pcfg.json"
 if [ ! -f "$p2pcfg" ]; then
