@@ -22,6 +22,15 @@ log_clould="/tmp/debug/led"
 
 
 
+printer_detect="/etc/udev/rules.d/98-3d-printer.rules"
+if [ ! -f "$printer_detect" ]; then
+        echo "$printer_detect" was not exist!
+        # uart hotplug
+        sudo echo "ACTION==\"add\", ATTRS{product}==\"USB Serial\", SUBSYSTEMS==\"usb\", RUN+=\"$baseDirForScriptSelf/usbdrive.sh &\"
+        ACTION==\"remove\", ATTRS{product}==\"USB Serial\",  SUBSYSTEMS==\"usb\", RUN+=\"$baseDirForScriptSelf/usbdrive.sh &\"" > $baseDirForScriptSelf/98-3d-printer.rules
+        sudo mv "$baseDirForScriptSelf"/98-3d-printer.rules /etc/udev/rules.d/
+#       exit 0
+fi
 
 
 printer_com_project="$baseDirForScriptSelf/prtSerial"
