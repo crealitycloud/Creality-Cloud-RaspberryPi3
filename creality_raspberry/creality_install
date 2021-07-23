@@ -150,8 +150,8 @@ WantedBy=multi-user.target" > $baseDirForScriptSelf/creality_video_monitoring.se
 sudo mv "$baseDirForScriptSelf"/creality_video_monitoring.service /usr/lib/systemd/system 
 
 # uart hotplug
-sudo echo "ACTION==\"add\", SUBSYSTEMS==\"usb\", RUN+=\"$baseDirForScriptSelf/usbdrive.sh &\"
-ACTION==\"remove\", SUBSYSTEMS==\"usb\", RUN+=\"$baseDirForScriptSelf/usbdrive.sh &\"" > $baseDirForScriptSelf/98-3d-printer.rules
+sudo echo "ACTION==\"add\", ATTRS{product}==\"USB Serial\", SUBSYSTEMS==\"usb\", RUN+=\"$baseDirForScriptSelf/usbdrive.sh &\"
+ACTION==\"remove\", ATTRS{product}==\"USB Serial\",  SUBSYSTEMS==\"usb\", RUN+=\"$baseDirForScriptSelf/usbdrive.sh &\"" > $baseDirForScriptSelf/98-3d-printer.rules
 sudo mv "$baseDirForScriptSelf"/98-3d-printer.rules /etc/udev/rules.d/ 
 
 p2pcfg="$baseDirForScriptSelf/p2pcfg.json"
