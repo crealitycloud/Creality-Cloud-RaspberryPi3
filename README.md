@@ -38,7 +38,7 @@ If you are looking for an alternative, please make sure the camera you purchase 
 
 How-to video: [https://youtu.be/wOFro6GwEFQ](https://youtu.be/wOFro6GwEFQ)
 
-Using SSH on the Raspberry Pi (10-min read):[https://pimylifeup.com/raspberry-pi-ssh/](https://pimylifeup.com/raspberry-pi-ssh/)
+Using SSH on the Raspberry Pi (10-min read): [https://pimylifeup.com/raspberry-pi-ssh/](https://pimylifeup.com/raspberry-pi-ssh/)
 
 # **Install CrealityPi on Raspberry Pi**
 
