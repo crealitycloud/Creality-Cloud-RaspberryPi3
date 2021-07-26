@@ -3,7 +3,8 @@
 
 # **What is CrealityPi?**
 
-CrealityPi is a firmware that can run on a Raspberry Pi. What is a Raspberry Pi? [https://youtu.be/uXUjwk2-qx4](https://youtu.be/uXUjwk2-qx4)
+CrealityPi is a firmware that can run on a Raspberry Pi. (What is a Raspberry Pi? [https://youtu.be/uXUjwk2-qx4](https://youtu.be/uXUjwk2-qx4))
+
 With CrealityPi, you can remote control and monitor your 3D printer. Here are some of the things CrealityPi allows you to do:
 
 - Manually control a Creality 3D printer using the Creality Cloud app
