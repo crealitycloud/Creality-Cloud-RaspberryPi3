@@ -1,9 +1,7 @@
 # **How to Install CrealityPi on a Raspberry Pi**
-
+![](./picture/add77.png)
 
 # **What is CrealityPi?**
-
-![](./picture/add77.png)
 
 CrealityPi is a firmware that can run on a Raspberry Pi. (What is a Raspberry Pi: [https://youtu.be/uXUjwk2-qx4](https://youtu.be/uXUjwk2-qx4))
 
