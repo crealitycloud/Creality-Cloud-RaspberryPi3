@@ -1,5 +1,6 @@
 # **How to Install CrealityPi on a Raspberry Pi**
-![](./picture/add77.png =50x50)
+
+<img src="add77.png" width="50" height="50" />
 
 # **What is CrealityPi?**
 
