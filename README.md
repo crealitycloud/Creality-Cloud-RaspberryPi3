@@ -102,4 +102,16 @@ sudo systemctl status creality_printer.service
 
 # **Where to find us**
 
+YouTube: [https://www.youtube.com/channel/UC2uuVfyi9MH-Xp3XJq5RhnA](https://www.youtube.com/channel/UC2uuVfyi9MH-Xp3XJq5RhnA)
+
 Facebook: [https://www.facebook.com/CrealityCloudApp](https://www.facebook.com/CrealityCloudApp)
+
+Twitter: [https://twitter.com/CrealityCloud](https://twitter.com/CrealityCloud)
+
+Instagram: [https://www.instagram.com/creality_cloud/](https://www.instagram.com/creality_cloud/)
+
+TikTok: [https://vm.tiktok.com/ZMdWvuWKQ/](https://vm.tiktok.com/ZMdWvuWKQ/)
+
+Email: teamcloud@creality.com
+
+
