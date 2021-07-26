@@ -102,4 +102,4 @@ sudo systemctl status creality_printer.service
 
 # **Where to find us**
 
-Facebook: [https://www.facebook.com/CrealityCloudApp](Facebook)
+Facebook: [https://www.facebook.com/CrealityCloudApp](https://www.facebook.com/CrealityCloudApp)
