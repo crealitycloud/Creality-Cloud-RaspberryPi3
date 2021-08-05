@@ -101,7 +101,7 @@ sudo systemctl stop creality_printer.service
 ```bash
 sudo systemctl status creality_printer.service
 ```
-# **How to update CrealityPi?**
+# **How to update CrealityPi**
 ```bash
 cd Creality-Cloud-RaspberryPi3/
 
