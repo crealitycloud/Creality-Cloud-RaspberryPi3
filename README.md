@@ -46,19 +46,19 @@ Using SSH on the Raspberry Pi (10-min read): [https://pimylifeup.com/raspberry-p
 1. **Install the service program**
 
   - Download CrealityPi:
-```
+```bash
 sudo git clone [https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git](https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git)
 ```
 ![](./picture/add2.jpg)
 
   - Enter install directory:
-```
+```bash
   cd Creality-Cloud-RaspberryPi3/creality_raspberry
 ```
 ![](./picture/add3.jpg)
 
   - Run installer scripts:
-```
+```bash
   sudo ./creality_install
 ```
 ![](./picture/add4.jpg)
@@ -88,21 +88,21 @@ Please give your Raspberry Pi a cool name and tap Done. You are all set! You can
 # **Some useful commands**
 
 - **Start service**
-```
+```bash
 sudo systemctl start creality_printer.service
 ```
 - **Stop service**
-```
+```bash
 sudo systemctl stop creality_printer.service
 ```
 ![](./picture/add9.jpg)
 
 - **Check service status**
-```
+```bash
 sudo systemctl status creality_printer.service
 ```
 # **How to update CrealityPi?**
-```
+```bash
 cd Creality-Cloud-RaspberryPi3/
 
 sudo git fetch --all
