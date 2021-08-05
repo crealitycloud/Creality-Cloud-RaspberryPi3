@@ -33,7 +33,7 @@ Creality webcam is recommended [https://vip.creality.com/en/goods-detail/1004](h
 
 If you are looking for an alternative, please make sure the camera you purchase meets the following requirements:
 
-![](./picture/12w.png)
+![](./picture/rrr.png)
 
 4. **SSH into your Raspberry Pi**
 
