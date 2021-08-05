@@ -47,7 +47,7 @@ Using SSH on the Raspberry Pi (10-min read): [https://pimylifeup.com/raspberry-p
 
   - Download CrealityPi:
 ```bash
-sudo git clone [https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git](https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git)
+sudo git clone https://github.com/crealitycloud/Creality-Cloud-RaspberryPi3.git
 ```
 ![](./picture/add2.jpg)
 
