@@ -113,7 +113,9 @@ sudo git pull
 
 YouTube: [https://www.youtube.com/channel/UC2uuVfyi9MH-Xp3XJq5RhnA](https://www.youtube.com/channel/UC2uuVfyi9MH-Xp3XJq5RhnA)
 
-Facebook: [https://www.facebook.com/CrealityCloudApp](https://www.facebook.com/CrealityCloudApp)
+Facebook (English): [https://www.facebook.com/CrealityCloudApp](https://www.facebook.com/CrealityCloudApp)
+
+Facebook (Français): [https://crealitycloud.tiny.us/5k9znfsn](https://crealitycloud.tiny.us/5k9znfsn)
 
 Twitter: [https://twitter.com/CrealityCloud](https://twitter.com/CrealityCloud)
 
