@@ -111,17 +111,17 @@ sudo git pull
 ```
 # **Where to find us**
 
-YouTube: [https://www.youtube.com/channel/UC2uuVfyi9MH-Xp3XJq5RhnA](https://www.youtube.com/channel/UC2uuVfyi9MH-Xp3XJq5RhnA)
+YouTube: [https://crealitycloud.tiny.us/38p3x2bw](https://crealitycloud.tiny.us/38p3x2bw)
 
-Facebook (English): [https://www.facebook.com/CrealityCloudApp](https://www.facebook.com/CrealityCloudApp)
+Facebook (English): [https://crealitycloud.tiny.us/cr495snt](https://crealitycloud.tiny.us/cr495snt)
 
 Facebook (Français): [https://crealitycloud.tiny.us/5k9znfsn](https://crealitycloud.tiny.us/5k9znfsn)
 
-Twitter: [https://twitter.com/CrealityCloud](https://twitter.com/CrealityCloud)
+Twitter: [https://crealitycloud.tiny.us/2n97xphj](https://crealitycloud.tiny.us/2n97xphj)
 
-Instagram: [https://www.instagram.com/creality_cloud/](https://www.instagram.com/creality_cloud/)
+Instagram: [https://crealitycloud.tiny.us/2rxcmfa7](https://crealitycloud.tiny.us/2rxcmfa7)
 
-TikTok: [https://vm.tiktok.com/ZMdWvuWKQ/](https://vm.tiktok.com/ZMdWvuWKQ/)
+TikTok: [https://crealitycloud.tiny.us/7p43mvr2](https://crealitycloud.tiny.us/7p43mvr2)
 
 Email: teamcloud@creality.com
 
