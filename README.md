@@ -27,6 +27,8 @@ Android: [https://tinyurl.com/CrealityAndroid](https://tinyurl.com/CrealityAndro
 
 We recommend using a Raspberry Pi from Raspberry Pi 3 & 4 family.
 
+Raspberry Pi 4 - [Buy on Amazon] (https://amzn.to/41COluo)
+
 3. **Connect a supported webcam with your Raspberry Pi (Optional)**
 
 Creality webcam is recommended [https://vip.creality.com/en/goods-detail/1004](https://vip.creality.com/en/goods-detail/1004). 
