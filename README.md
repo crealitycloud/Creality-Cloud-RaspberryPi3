@@ -1,3 +1,7 @@
+***
+__This project has been discontinued and is no longer being maintained. Users are advised to use [https://github.com/crealitycloud/OctoPrint-CrealityCloud-With-Video](https://github.com/crealitycloud/OctoPrint-CrealityCloud-With-Video) or [GitHub - crealitycloud/OctoPrint-CrealityCloud](https://github.com/crealitycloud/OctoPrint-CrealityCloud) as alternatives.__
+***
+
 # **How to Install CrealityPi on a Raspberry Pi**
 
 ![](./picture/add77.png)
